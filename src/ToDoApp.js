@@ -33,7 +33,6 @@ export default class ToDoApp extends React.Component {
 		let index = todos.findIndex(todo => todo.id === id);
 		todos.splice(index, 1);
 		this.setState({todos});
-
 	};
 
 	addTodo = (todo) => {
@@ -43,7 +42,6 @@ export default class ToDoApp extends React.Component {
 		let todos = this.state.todos;
 		todos.push(todo);
 		this.setState({todos});
-
 	};
 
 	toggleAll = (event) => {
@@ -58,11 +56,18 @@ export default class ToDoApp extends React.Component {
 
 	changeFilterType=(filterTypes)=>{
 		this.setState({filterTypes});
-	}
+	};
+
+	clearCompleted = () => {
+		let todos = this.state.todos;
+		todos = todos.filter(todo => !todo.completed);
+		this.setState({todos});
+	};
 
 	render() {
 		let todos = this.state.todos;
 		let activeTodoCount = todos.reduce((count, todo) => count + (todo.completed ? 0 : 1), 0);
+		let completedTodoCount = todos.length - activeTodoCount;
 
 		//进行过滤
 		let showTodos = todos.filter((todo) => {
@@ -110,7 +115,7 @@ export default class ToDoApp extends React.Component {
 							</div>
 
 							<div className="panel-footer">
-								<TodoFooter activeTodoCount={activeTodoCount} changeFilterType={this.changeFilterType} filterType={this.state.filterTypes} />
+								<TodoFooter activeTodoCount={activeTodoCount} changeFilterType={this.changeFilterType} filterType={this.state.filterTypes} clearCompleted={this.clearCompleted}  completedTodoCount = {completedTodoCount}/>
 							</div>
 
 						</div>

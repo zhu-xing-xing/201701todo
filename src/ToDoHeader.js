@@ -15,7 +15,7 @@ export default class ToDoHeader extends React.Component {
 	render() {
 		return (
 			<div className="form-group">
-				<input onKeyDown={this.handleKeyDown} className="form-control" type="text" autoFocus={true}/>
+				<input onKeyDown={this.handleKeyDown} className="form-control" type="text" autoFocus={true} placeholder="请输入要办的事情"/>
 			</div>
 		);
 	}
