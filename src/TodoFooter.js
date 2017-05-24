@@ -9,7 +9,7 @@ export default class TodoFooter extends  React.Component{
 					{
 						this.props.activeTodoCount>0?
 							<div style={{height:'30px',lineHeight:'30px'}}>
-								<a href="#" style={{textDecoration: 'none'}}>
+								<a style={{textDecoration: 'none'}}>
 									你有<span className="badge">{this.props.activeTodoCount}</span>件待办
 								</a>
 							</div>
@@ -18,9 +18,9 @@ export default class TodoFooter extends  React.Component{
 				</div>
 
 				<div className="col-md-6 text-center">
-					<button className={`btn btn-sm ${this.props.filterType==FilterTypes.ALL?'btn-success':'btn-default'}`} onClick={()=>this.props.changeFilterType(FilterTypes.ALL)}>全部</button>
-					<button className={`btn btn-sm ${this.props.filterType==FilterTypes.ACTIVE?'btn-success':'btn-default'}`}  style={{marginLeft:5}} onClick={()=>this.props.changeFilterType(FilterTypes.ACTIVE)}>未完成</button>
-					<button className={`btn btn-sm ${this.props.filterType==FilterTypes.COMPLETED?'btn-success':'btn-default'}`} style={{marginLeft:5}} onClick={()=>this.props.changeFilterType(FilterTypes.COMPLETED)}>已完成</button>
+					<button className={`btn btn-sm ${this.props.filterType===FilterTypes.ALL?'btn-success':'btn-default'}`} onClick={()=>this.props.changeFilterType(FilterTypes.ALL)}>全部</button>
+					<button className={`btn btn-sm ${this.props.filterType===FilterTypes.ACTIVE?'btn-success':'btn-default'}`}  style={{marginLeft:5}} onClick={()=>this.props.changeFilterType(FilterTypes.ACTIVE)}>未完成</button>
+					<button className={`btn btn-sm ${this.props.filterType===FilterTypes.COMPLETED?'btn-success':'btn-default'}`} style={{marginLeft:5}} onClick={()=>this.props.changeFilterType(FilterTypes.COMPLETED)}>已完成</button>
 				</div>
 
 				<div className="col-md-3">

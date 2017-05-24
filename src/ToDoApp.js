@@ -1,7 +1,5 @@
 import React from 'react';
-import ReactDOM from 'react-dom';
 import ToDoHeader from './ToDoHeader';
-import ToDoBody from './ToDoBody';
 import ToDoItem from './ToDoItem';
 import TodoFooter from './TodoFooter';
 import * as filterTypes from './filter-types';  //把所有变量变成一个对象导入进来
