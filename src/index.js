@@ -1,8 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import App from './App';
-import registerServiceWorker from './registerServiceWorker';
-import './index.css';
 
-ReactDOM.render(<App />, document.getElementById('root'));
-registerServiceWorker();
+import ToDoApp from './ToDoApp';
+import 'bootstrap/dist/css/bootstrap.css';
+
+ReactDOM.render(<ToDoApp />,document.querySelector("#root"));
