@@ -11,6 +11,7 @@ export default class ToDoApp extends React.Component {
 	constructor(props) {
 		super(props);
 		this.state = {  //初始化默认状态
+			todos: [],
 			filterTypes: filterTypes.ALL
 		}
 	}
@@ -34,7 +35,15 @@ export default class ToDoApp extends React.Component {
 		this.setState({todos});
 	};
 
+	addTodo = (todo) => {
+		/*  todo = Object.assign(todo,{id:Date.now(),completed:false},todo);  //es5
+		 todo = {id:Date.now(),completed:false,...todo};//es7 不支持*/
+		todo = Object.assign({}, {id: Math.random(), completed: false}, todo);//es5
+		let todos = this.state.todos;
+		todos.push(todo);
+		this.setState({todos});
 
+	};
 
 	toggleAll = (event) => {
 		let todos = this.state.todos;
@@ -46,7 +55,7 @@ export default class ToDoApp extends React.Component {
 		this.setState({todos});
 	};
 
-	changeFilterType=(filterTypes)=>{
+	changeFilterType = (filterTypes) => {
 		this.setState({filterTypes});
 	};
 
@@ -57,7 +66,7 @@ export default class ToDoApp extends React.Component {
 	};
 
 	render() {
-		let todos = this.props.model.todos;
+		let todos = this.state.todos;
 		let activeTodoCount = todos.reduce((count, todo) => count + (todo.completed ? 0 : 1), 0);
 		let completedTodoCount = todos.length - activeTodoCount;
 
@@ -99,7 +108,7 @@ export default class ToDoApp extends React.Component {
 						<div className="panel panel-default">
 
 							<div className="panel-heading">
-								<ToDoHeader addTodo={this.props.model.addTodo}/>
+								<ToDoHeader addTodo={this.addTodo}/>
 							</div>
 
 							<div className="panel-body">
@@ -107,7 +116,9 @@ export default class ToDoApp extends React.Component {
 							</div>
 
 							<div className="panel-footer">
-								<TodoFooter activeTodoCount={activeTodoCount} changeFilterType={this.changeFilterType} filterType={this.state.filterTypes} clearCompleted={this.clearCompleted}  completedTodoCount = {completedTodoCount}/>
+								<TodoFooter activeTodoCount={activeTodoCount} changeFilterType={this.changeFilterType}
+								            filterType={this.state.filterTypes} clearCompleted={this.clearCompleted}
+								            completedTodoCount={completedTodoCount}/>
 							</div>
 
 						</div>
